@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+docker-compose.yml
+.git
+.gitignore
+README.md
+LICENSE
+.svelte-kit
+.github
+node_modules
+build
+package
+**/.env
