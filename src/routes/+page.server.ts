@@ -1,9 +1,11 @@
 // import type { PageServerLoad } from './$types';
-// import { createOsmBuildingsAsync, Terrain } from 'cesium';
-//
+// import { CESIUM_TOKEN } from '$env/static/private';
+// import { Ion, Math as CesiumMath, Cartesian3, createOsmBuildingsAsync } from 'cesium';
+
 // export const load: PageServerLoad = async () => {
-//   return {
-//     terrainProvider: Terrain.fromWorldTerrain(),
-//     // buildings: await createOsmBuildingsAsync(),
-//   };
+//     Ion.defaultAccessToken = CESIUM_TOKEN;
+
+//     return {
+//         buildings: await createOsmBuildingsAsync(),
+//     };
 // }
