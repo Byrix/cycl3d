@@ -1,23 +1,20 @@
 <script lang="ts">
-  import type { Command } from "cesium";
   import {
     Icon,
     Home,
     InformationCircle,
     GlobeAlt,
-    Plus,
-    Bars3,
+    Plus
   } from "svelte-hero-icons";
-    import ControllerFullscreen from "./ControllerFullscreen.svelte";
+
+  let { children } = $props();
 
   interface MapControls {
     tooltip: string;
     icon: typeof Home;
   }
   const mapControls: MapControls[] = [
-    { tooltip: "Fly to Home", icon: Home },
     { tooltip: "Navigation Instructions", icon: InformationCircle },
-    { tooltip: "Toggle 3D/2D", icon: GlobeAlt },
   ];
 
 </script>
@@ -30,12 +27,12 @@
       src={Plus}
       class="size-10 rotate-0 transition duration-300 ease-in-out hover:rotate-45"
     />
-    <!-- <Icon src={Bars3} class='size-10 ' -->
   </div>
   <div
     tabIndex={0}
     class="dropdown-content menu bg-transparent rounded-box z-1 w-fit p-2 gap-3"
   >
+    
     {#each mapControls as { tooltip, icon }}
       <li class="tooltip tooltip-left" data-tip={tooltip}>
         <button class="btn btn-lg btn-circle btn-soft btn-primary">
@@ -43,11 +40,7 @@
         </button>
       </li>
     {/each}
-    <ControllerFullscreen 
-      classes='btn btn-lg btn-circle btn-soft btn-primary'
-      element="map" 
-      icon='open_in_full'
-      altIcon='close_fullscreen'
-    />
+    
+    {@render children()}
   </div>
 </div>

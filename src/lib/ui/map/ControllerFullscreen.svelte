@@ -1,28 +1,31 @@
-<script lang="ts">
-    import { Fullscreen, FullscreenButton } from 'cesium';
-    import { onMount } from 'svelte';
-    import { Icon, ArrowsPointingOut, ArrowsPointingIn } from 'svelte-hero-icons';
-    import overrideButtons from './overrideButtons';
+<script lang='ts'>
+    import { Icon, ArrowsPointingOut, ArrowsPointingIn } from "svelte-hero-icons";
 
-    let { element, classes, icon, altIcon } = $props();
-    var wrapper: HTMLLIElement;
-    'btn btn-lg btn-circle btn-soft btn-primary'
+    let { element } = $props();
+    var isFullscreen = $state(false);
 
-    onMount(() => {
-        try{ 
-            new FullscreenButton(wrapper.id, element);
-            // @ts-expect-error previous line would throw error if it failed to create children for wrapper
-            overrideButtons(wrapper.firstElementChild, classes, icon, altIcon);
-        } catch (error) {
-            console.log(error);
-        } 
-    });
+    const fullscreenToggle = (id: string) => {
+        const element = document.getElementById(id);
+        if (!element) throw new Error(`No element ID:#${id} found in DOM`);
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            if (element.requestFullscreen) {
+                element.requestFullscreen().catch((err: Error) => { throw err });
+            } else {
+                alert('Browser does not support fullscreen');
+            }
+        }
+        isFullscreen = document.fullscreenElement ? true : false
+    }
 </script>
 
-<svelte:head>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-</svelte:head>
-
-<li bind:this={wrapper} id='btn-fullscreen' class='tooltip tooltip-left' data-tip='Make fullscreen'></li>
-
-
+<li class='tooltip tooltip-left' data-tip='Make fullscreen'>
+    <button onclick={() => fullscreenToggle(element) } class='btn btn-lg btn-circle btn-primary btn-soft'>
+        <label class={`swap ${isFullscreen ? 'swap-active' : ''}`}>
+            <Icon src={ArrowsPointingIn} class='swap-off size-8' />
+            <Icon src={ArrowsPointingOut} class='swap-on size-8' />
+        </label>
+    </button>
+</li>
