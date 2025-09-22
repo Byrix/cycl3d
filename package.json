@@ -1,0 +1,21 @@
+{
+  "name": "cycl3d",
+  "workspaces": {
+    "packages": ["client", "server"],
+    "catalog": {
+      "@biomejs/biome": "2.2.4"
+    }
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "check": "turbo run check"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:"
+  },
+  "trustedDependencies": ["@biomejs/biome"],
+  "dependencies": {
+    "turbo": "^2.5.6"
+  },
+  "packageManager": "bun@1.2.22"
+}
