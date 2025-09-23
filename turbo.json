@@ -5,8 +5,10 @@
       "cache": false,
       "persistent": true
     },
-    "check": {
-      "dependsOn": ["^check"]
-    }
+    "check": { "dependsOn": ["^check"] },
+    "lint": { "dependsOn": ["^lint"] },
+    "lint:write": { "dependsOn": ["^lint:write"] },
+    "format": { "dependsOn": ["^format"] },
+    "format:write": { "dependsOn": ["^format:write"] }
   }
 }

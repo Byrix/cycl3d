@@ -8,7 +8,11 @@
   },
   "scripts": {
     "dev": "turbo run dev",
-    "check": "turbo run check"
+    "check": "turbo run check",
+    "lint": "turbo run lint",
+    "lint:write": "turbo run lint:write",
+    "format": "turbo run format",
+    "format:write": "turbo run format:write"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:"
