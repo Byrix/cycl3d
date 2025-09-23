@@ -8,14 +8,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cycl3d/server": "workspace:",
     "@elysiajs/eden": "^1.4.1",
     "@tailwindcss/vite": "^4.1.13",
-    "@cycl3d/server": "workspace:",
+    "daisyui": "^5.1.13",
     "preact": "^10.27.2",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
+    "@iconify/react": "^6.0.2",
     "@preact/preset-vite": "^2.10.2",
+    "@rollup/plugin-alias": "^5.1.1",
+    "iconify": "^1.4.0",
+    "preact-iso": "^2.10.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.6"
   },

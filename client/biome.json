@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"$schema": "../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../biome.json"],
 	"files": {
 		"ignore": ["**/node_modules", "**/dist"]
@@ -77,6 +77,11 @@
 			}
 		},
 		"ignore": ["**/dist"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "space",
+		"indentWidth": 2
 	},
 	"css": {
 		"formatter": {
