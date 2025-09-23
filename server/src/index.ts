@@ -1,7 +1,29 @@
-import { Elysia } from "elysia";
+import pc from "picocolors";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+import { app } from "./app";
+import { env } from "./env";
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+const ELYSIA_VERSION = import.meta.require("elysia/package.json").version;
+const startTime = performance.now();
+
+process.stdout.write("\x1Bc\n");
+app.listen(
+  {
+    port: env.PORT,
+    hostname: env.HOSTNAME,
+  },
+  (server) => {
+    const duration = performance.now() - startTime;
+
+    console.log(
+      `🦊 ${pc.green(`${pc.bold("Elysia")} v${ELYSIA_VERSION}`)} ${pc.gray("started in")} ${pc.bold(duration.toFixed(2))} ms\n`,
+    );
+    console.log(
+      `${pc.green(" ➜ ")} ${pc.bold("Server")}:   ${pc.cyan(String(server.url))}`,
+    );
+    console.log(
+      `${pc.green(" ➜ ")} ${pc.bold("Database")}: ${pc.cyan(`postgres://${env.PGUSER}@${env.PGHOST}:${env.PGPORT}/${env.PGDATABASE}`)}`,
+      "\n",
+    );
+  },
 );

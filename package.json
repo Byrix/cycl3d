@@ -15,6 +15,8 @@
   },
   "trustedDependencies": ["@biomejs/biome"],
   "dependencies": {
+    "@tqman/nice-logger": "^1.1.1",
+    "axios": "^1.12.2",
     "turbo": "^2.5.6"
   },
   "packageManager": "bun@1.2.22"
