@@ -1,8 +1,9 @@
 {
+  "root": false,
   "$schema": "../node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["../biome.json"],
   "files": {
-    "includes": ["!**/bun.lock"]
+    "includes": ["**/*", "!**/bun.lock", "!**/.turbo"]
   },
   "linter": {
     "enabled": true,
@@ -11,6 +12,7 @@
     }
   },
   "formatter": {
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "indentWidth": 2
   }
 }

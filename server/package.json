@@ -10,7 +10,8 @@
     "format:write": "biome format --write",
     "lint": "biome lint",
     "lint:write": "biome lint --write",
-    "check": "biome check"
+    "check": "biome check",
+    "db:pull": "bunx --bun drizzle-kit pull"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
@@ -23,6 +24,7 @@
   "dependencies": {
     "@elysiajs/cors": "^1.4.0",
     "@elysiajs/openapi": "^1.4.10",
+    "cesium": "^1.133.1",
     "dotenv": "^17.2.2",
     "drizzle-orm": "^0.44.5",
     "elysia": "latest",

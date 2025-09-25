@@ -2,6 +2,11 @@
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "linter": { "enabled": false },
   "files": {
-    "includes": ["!**/node_modules", "!**/out", "!**/dist"]
+    "includes": ["**/*", "!**/node_modules", "!**/out", "!**/dist"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "formatWithErrors": false
   }
 }
