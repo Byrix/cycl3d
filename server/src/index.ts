@@ -19,10 +19,13 @@ app.listen(
       `🦊 ${pc.green(`${pc.bold("Elysia")} v${ELYSIA_VERSION}`)} ${pc.gray("started in")} ${pc.bold(duration.toFixed(2))} ms\n`,
     );
     console.log(
-      `${pc.green(" ➜ ")} ${pc.bold("Server")}:   ${pc.cyan(String(server.url))}`,
+      `${pc.green(" ➜ ")} ${pc.bold("Server")}:     ${pc.cyan(String(server.url))}`,
     );
     console.log(
-      `${pc.green(" ➜ ")} ${pc.bold("Database")}: ${pc.cyan(`postgres://${env.PGUSER}@${env.PGHOST}:${env.PGPORT}/${env.PGDATABASE}`)}`,
+      `${pc.green(" ➜ ")} ${pc.bold("Database")}:   ${pc.cyan(`postgres://${env.PGUSER}@${env.PGHOST}:${env.PGPORT}/${env.PGDATABASE}`)}`,
+    );
+    console.log(
+      `${pc.green(" ➜ ")} ${pc.bold("Geoserver")}:  ${pc.cyan(`http://${env.GEOSERVER_BASE}`)}`,
       "\n",
     );
   },

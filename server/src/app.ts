@@ -5,13 +5,13 @@ import { Elysia } from "elysia";
 import { autoload } from "elysia-autoload";
 
 export const app = new Elysia()
-	.use(cors())
-	.use(openapi())
-	.use(logger({ withTimestamp: true }))
-	.use(
+  .use(cors())
+  .use(openapi())
+  .use(logger({ withTimestamp: true }))
+  .use(
     await autoload({
       dir: "./modules",
       prefix: "/api",
-      ignore: ["**/model.ts", "**/service.ts"]
-    })
+      ignore: ["**/model.ts", "**/service.ts"],
+    }),
   );
