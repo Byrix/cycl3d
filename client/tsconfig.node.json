@@ -1,17 +1,17 @@
 {
-	"compilerOptions": {
-		"composite": true,
-		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-		"skipLibCheck": true,
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"noEmit": true,
-		"paths": {
-			"$/*": ["./src/*"]
-		},
-		"declarationMap": false
-	},
-	"include": ["vite.config.ts"]
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noEmit": true,
+    "paths": {
+      "$/*": ["./src/*"]
+    },
+    "declarationMap": false
+  },
+  "include": ["vite.config.ts"]
 }

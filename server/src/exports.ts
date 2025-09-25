@@ -1,6 +1,8 @@
 import type { app } from "./app";
+import type { Geocoder } from "./modules/geocode/model";
 
 export type App = typeof app;
 
-export type { GeocodeResponse } from "$/modules/geocode/model";
+type GeocodeResponse = Geocoder.geocodeResponse;
+export type { GeocodeResponse };
 export type { SelectUser } from "./db/models";

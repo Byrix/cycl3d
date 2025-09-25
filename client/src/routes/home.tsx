@@ -6,15 +6,15 @@ import MainLayout from "$/layouts/MainLayout.tsx";
 import { useToasts } from "$/shared/toasts.store";
 
 const Home = () => {
-	return (
-		<MainLayout>
-			<div class="flex flex-row w-full h-full">
-				<Toaster toasterState={useToasts} />
-				<Sidebar />
-				<CesiumMap />
-			</div>
-		</MainLayout>
-	);
+  return (
+    <MainLayout>
+      <div class="flex flex-row w-full h-full">
+        <Toaster toasterState={useToasts} />
+        <Sidebar />
+        <CesiumMap />
+      </div>
+    </MainLayout>
+  );
 };
 
 export default Home;

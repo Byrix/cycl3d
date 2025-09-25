@@ -1,41 +1,41 @@
 {
-	"name": "@cycl3d/client",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"preview": "vite preview",
-		"format": "biome format",
-		"format:write": "biome format --write",
-		"lint": "biome lint",
-		"lint:write": "biome lint --write",
-		"check": "biome check"
-	},
-	"dependencies": {
-		"@cycl3d/server": "workspace:",
-		"@elysiajs/eden": "^1.4.1",
-		"@preact/signals": "^2.3.1",
-		"@tailwindcss/vite": "^4.1.13",
-		"cesium": "^1.133.1",
-		"daisyui": "^5.1.13",
-		"deepsignal": "^1.6.0",
-		"preact": "^10.27.2",
-		"resium": "^1.19.0-beta.1",
-		"tailwindcss": "^4.1.13",
-		"typebox": "^1.0.15"
-	},
-	"devDependencies": {
-		"@iconify/react": "^6.0.2",
-		"@preact/preset-vite": "^2.10.2",
-		"@rollup/plugin-alias": "^5.1.1",
-		"iconify": "^1.4.0",
-		"preact-iso": "^2.10.0",
-		"typescript": "~5.8.3",
-		"vite": "^7.1.6",
-		"vite-plugin-static-copy": "^3.1.2"
-	},
-	"trustedDependencies": [
-		"@biomejs/biome"
-	]
+  "name": "@cycl3d/client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "format": "biome format",
+    "format:write": "biome format --write",
+    "lint": "biome lint",
+    "lint:write": "biome lint --write",
+    "check": "biome check"
+  },
+  "dependencies": {
+    "@cycl3d/server": "workspace:",
+    "@elysiajs/eden": "^1.4.1",
+    "@preact/signals": "^2.3.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "cesium": "^1.133.1",
+    "daisyui": "^5.1.13",
+    "deepsignal": "^1.6.0",
+    "preact": "^10.27.2",
+    "resium": "^1.19.0-beta.1",
+    "tailwindcss": "^4.1.13",
+    "typebox": "^1.0.15"
+  },
+  "devDependencies": {
+    "@iconify/react": "^6.0.2",
+    "@preact/preset-vite": "^2.10.2",
+    "@rollup/plugin-alias": "^5.1.1",
+    "iconify": "^1.4.0",
+    "preact-iso": "^2.10.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.6",
+    "vite-plugin-static-copy": "^3.1.2"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

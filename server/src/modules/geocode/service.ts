@@ -1,9 +1,9 @@
 import { eq, sql } from "drizzle-orm";
 import { db } from "$/db";
 import { lgas } from "$/db/schema";
-import { status } from 'elysia';
-import axios, { type AxiosResponse } from 'axios';
-import type { Geocoder } from './model';
+import { status } from "elysia";
+import axios, { type AxiosResponse } from "axios";
+import type { Geocoder } from "./model";
 
 export abstract class Geocoding {
   async getBounds() {
@@ -21,7 +21,8 @@ export abstract class Geocoding {
       const matches = point.match(
         /\((?<longitude>[\d.-]+) (?<latitude>[\d.-]+)\)/,
       );
-      if (!matches || !matches.groups) throw status(400, "Error processing boundary");
+      if (!matches || !matches.groups)
+        throw status(400, "Error processing boundary");
       const { longitude, latitude } = matches.groups;
       return {
         x: parseFloat(longitude),
@@ -40,34 +41,42 @@ export abstract class Geocoding {
   static async query(q: string) {
     let resp: AxiosResponse<Geocoder.nominatimResponse[]>;
     try {
-      resp = await axios.get(
-        `https://nominatim.openstreetmap.org/search`,
-        {
-          params: {
-            q: q,
-            format: "jsonv2",
-            limit: 5,
-            countrycodes: "au"
-            // viewbox: bounds,
-          },
+      resp = await axios.get(`https://nominatim.openstreetmap.org/search`, {
+        params: {
+          q: q,
+          format: "jsonv2",
+          limit: 5,
+          countrycodes: "au",
+          // viewbox: bounds,
         },
-      );
+      });
       // biome-ignore lint/suspicious/noExplicitAny: catch error has to be any
     } catch (err: any) {
+      console.error(err);
       const respStatus = err.response?.status ?? 502;
       const respMsg = err.message ?? "Bad Gateway";
       throw status(respStatus, respMsg);
     }
 
-    const places = resp.data.map((option) => ({
-      name: option.display_name,
-      rank: option.place_rank,
-      bbox: option.boundingbox,
-    })).sort((a: Geocoder.geocodeResponse, b: Geocoder.geocodeResponse) => b.rank - a.rank );
+    const places = resp.data
+      .map((option) => ({
+        name: option.display_name,
+        rank: option.place_rank,
+        bbox: option.boundingbox,
+      }))
+      .sort(
+        (a: Geocoder.geocodeResponse, b: Geocoder.geocodeResponse) =>
+          a.rank - b.rank,
+      );
+
+    console.debug(places);
 
     return new Response(JSON.stringify(places), {
       status: resp.status,
-      headers: resp.headers.toJSON(true)
+      headers: new Headers({
+        "Content-Type":
+          (resp.headers["Content-Type"] as string) ?? "application/json",
+      }),
     });
   }
 }

@@ -26,7 +26,7 @@ export namespace Geocoder {
   export const ResponseSchema = t.Object({
     rank: t.Integer(),
     name: t.String(),
-    bbox: t.Array(t.Number(), { minItems: 4, maxItems: 4}),
+    bbox: t.Array(t.Number(), { minItems: 4, maxItems: 4 }),
   });
 
   export type geocodeResponse = typeof ResponseSchema.static;

@@ -9,28 +9,28 @@ var buildingData: Cesium3DTileset;
 var primitive = signal();
 
 Ion.defaultAccessToken =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4MDQwOGUzNy05MWE2LTQwZmUtYmUzNi1iZWI0YmMyNjIwMmYiLCJpZCI6MzI4NDE3LCJpYXQiOjE3NTU2MDMwNTV9.EeIAbofEXbNunLLy5-UkZPpz_KUhNFQQSpksUcOFlwk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4MDQwOGUzNy05MWE2LTQwZmUtYmUzNi1iZWI0YmMyNjIwMmYiLCJpZCI6MzI4NDE3LCJpYXQiOjE3NTU2MDMwNTV9.EeIAbofEXbNunLLy5-UkZPpz_KUhNFQQSpksUcOFlwk";
 
 effect(() => {
-	if (!data.buildings.loaded) return;
-	primitive.value.show = data.buildings.show;
+  if (!data.buildings.loaded) return;
+  primitive.value.show = data.buildings.show;
 });
 
 const getBuilding = async () => {
-	try {
-		buildingData = await createOsmBuildingsAsync();
-		primitive.value = map.viewer?.scene.primitives.add(buildingData);
-		data.buildings.loaded = true;
-		// biome-ignore lint/suspicious/noExplicitAny: caught err has to be
-	} catch (err: any) {
-		useToasts.warn("Failed to load OSM buildings");
-		console.error(err);
-	}
+  try {
+    buildingData = await createOsmBuildingsAsync();
+    primitive.value = map.viewer?.scene.primitives.add(buildingData);
+    data.buildings.loaded = true;
+    // biome-ignore lint/suspicious/noExplicitAny: caught err has to be
+  } catch (err: any) {
+    useToasts.warn("Failed to load OSM buildings");
+    console.error(err);
+  }
 };
 
 const Buildings = () => {
-	getBuilding();
-	return <></>;
+  getBuilding();
+  return <></>;
 };
 
 export default Buildings;
