@@ -1,1 +1,1 @@
-export { default as CesiumMap } from './Cesium.tsx';
+export { default as CesiumMap } from "./Cesium";
