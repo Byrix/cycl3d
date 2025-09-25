@@ -1,0 +1,40 @@
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+		visibility: visible;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+:root {
+	--mask-start: 45%;
+	--mask-end: 55%;
+}
+
+.mask-slashed {
+  mask-image: linear-gradient(
+    55deg,
+    black var(--mask-start),
+    transparent var(--mask-start),
+    transparent var(--mask-end),
+    black var(--mask-end)
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(
+    55deg,
+    black var(--mask-start),
+    transparent var(--mask-start),
+    transparent var(--mask-end),
+    black var(--mask-end)
+  );
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+
+	transition: --mask-start 1s ease-out, 
+							--mask-end 1s ease-out;
+}
+
