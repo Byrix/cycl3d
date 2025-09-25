@@ -41,7 +41,6 @@ const EnvDTO = Type.Object({
   PGDATABASE: Type.String(),
   PGPORT: Type.Optional(Type.Number({ default: 5432 })),
   GEOSERVER_BASE: Type.String(),
-  CESIUM_TOKEN: Type.String(),
 });
 
 export const env = parseEnv(EnvDTO, process.env);

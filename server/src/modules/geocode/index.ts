@@ -1,47 +1,34 @@
 // Middleware route for geocoding with Nominatim
 
-import axios, { type AxiosResponse } from "axios";
 import type { App } from "$/exports";
-import { QuerySchema } from "./model";
+import { Geocoder } from './model';
+import { Geocoding } from './service';
 
 export default (app: App) =>
   app.get(
     "/",
     async ({ request, set, status }) => {
       const url = new URL(request.url);
-      const query = url.searchParams;
-      // const bounds = await Geocoding.getBounds();
+      const { q } = url.searchParams.toJSON();
 
-      let resp: AxiosResponse;
+      let resp: Response;
       try {
-        resp = await axios.get(
-          // `https://nominatim.openstreetmap.org/search?q=Unter%20den%20Linden%201%20Berlin&format=json&addressdetails=1&limit=1&polygon_svg=1`,
-          `https://nominatim.openstreetmap.org/search`,
-          {
-            params: {
-              ...query.toJSON(),
-              format: "jsonv2",
-              limit: 5,
-              // viewbox: bounds,
-            },
-          },
-        );
-        // biome-ignore lint/suspicious/noExplicitAny: catch error has to be any
+        resp = await Geocoding.query(q);
+      // biome-ignore lint/suspicious/noExplicitAny: catch error has to be any
       } catch (err: any) {
-        const respStatus = err.response?.status ?? 502;
-        const respMsg = err.message ?? "Bad Gateway";
-        return status(respStatus, respMsg);
+        console.error(err);
+        return status(err.response?.status ?? 502, err.message ?? "Bad Gateway")
       }
 
       set.status = resp.status as number;
-      const contentType = resp.headers["content-type"];
+      const contentType = resp.headers.get("content-type");
       if (contentType) set.headers["content-type"] = contentType;
 
-      return status(resp.status, resp.data);
+      return status(resp.status, resp.body);
     },
     {
-      query: QuerySchema,
-      // response: QueryRespSchema,
+      query: Geocoder.QuerySchema,
+      response: Geocoder.ResponseSchema,
       detail: {
         summary: "Geocoder",
         description: "Filtered geocoding via OSM-based Nominatim API",
