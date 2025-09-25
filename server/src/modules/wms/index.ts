@@ -25,7 +25,8 @@ export default (app: App) =>
             responseType: "stream",
             timeout: TIMEOUT,
           });
-        } catch (err) {
+          // biome-ignore lint/suspicious/noExplicitAny: catch error has to be any
+        } catch (err: any) {
           const respStatus = err.response?.status ?? 502;
           const respMsg = err.message ?? "Bad Gateway";
           return status(respStatus, respMsg);
