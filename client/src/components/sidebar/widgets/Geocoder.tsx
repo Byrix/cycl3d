@@ -1,6 +1,6 @@
 import type { GeocodeResponse } from "@cycl3d/server";
 import { Icon } from "@iconify/react";
-import { effect, Signal, signal } from "@preact/signals";
+import { effect, signal } from "@preact/signals";
 import { For } from "@preact/signals/utils";
 import { deepSignal } from "deepsignal";
 import { useEffect } from "preact/hooks";
