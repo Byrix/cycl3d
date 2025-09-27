@@ -21,7 +21,6 @@
     "daisyui": "^5.1.13",
     "deepsignal": "^1.6.0",
     "preact": "^10.27.2",
-    "resium": "^1.19.0-beta.1",
     "tailwindcss": "^4.1.13",
     "typebox": "^1.0.15"
   },
