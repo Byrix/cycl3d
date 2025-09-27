@@ -21,7 +21,7 @@
   "dependencies": {
     "@tqman/nice-logger": "^1.1.1",
     "axios": "^1.12.2",
-    "turbo": "^2.5.7"
+    "turbo": "^2.5.8"
   },
   "packageManager": "bun@1.2.22"
 }
