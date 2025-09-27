@@ -1,5 +1,6 @@
 import { CesiumMap } from "$/components/cesium";
 import { Sidebar } from "$/components/sidebar";
+import { ModalConductor } from '$/components/modals';
 import Toaster from "$/components/Toaster";
 import MainLayout from "$/layouts/MainLayout.tsx";
 
@@ -10,6 +11,7 @@ const Home = () => {
     <MainLayout>
       <div class="flex flex-row w-full h-full">
         <Toaster toasterState={useToasts} />
+        {/* <ModalConductor /> */}
         <Sidebar />
         <CesiumMap />
       </div>

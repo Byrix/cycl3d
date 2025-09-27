@@ -1,15 +1,19 @@
-import { createWorldTerrainAsync, Viewer } from "cesium";
+import { createWorldTerrainAsync, Ion, Viewer } from "cesium";
 import { useEffect } from "preact/hooks";
 import "cesium/Build/Cesium/Widgets/widgets.css";
+import { env } from "$/shared";
 import { map } from "$/shared/cesium.store";
-import { Buildings } from "./features";
+import { getData } from "./data";
 import { MapFlower } from "./widgets";
 
+Ion.defaultAccessToken = env.CESIUM_TOKEN;
 const terrainProv = await createWorldTerrainAsync();
 
 const CesiumMap = () => {
   useEffect(() => {
     if (map.isMounted) return;
+
+    // @ts-expect-error
     map.viewer = new Viewer("cesiumContainer", {
       terrainProvider: terrainProv,
       fullscreenButton: false,
@@ -19,12 +23,12 @@ const CesiumMap = () => {
       geocoder: false,
     });
     map.flyHome();
+    getData();
   }, []);
 
   return (
     <>
       <div id="cesiumContainer" class="h-full max-h-full">
-        <Buildings />
         <MapFlower />
       </div>
     </>

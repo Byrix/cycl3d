@@ -14,7 +14,11 @@ const DataFilters = () => {
           icon="material-symbols:location-city-rounded"
           sig={data.buildings}
         />
-        {/* <FilterButton label="Trees" icon="material-symbols:nature-rounded" /> */}
+        <FilterButton
+          label="Trees"
+          icon="material-symbols:nature-rounded"
+          sig={data.trees}
+        />
       </div>
     </Fieldset>
   );
@@ -31,7 +35,7 @@ const FilterButton = ({
 }) => {
   return (
     <label
-      class={`p-4 btn btn-soft rounded-none border-none swap !aspect-square w-full h-fit ${sig.show ? "bg-base-200" : "bg-base-300"}`}
+      class={`p-4 btn btn-soft rounded-none border-none swap !aspect-square w-full h-fit ${sig.show ? "bg-base-100" : "bg-base-200"}`}
     >
       <input
         type="checkbox"
