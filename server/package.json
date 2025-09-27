@@ -29,7 +29,8 @@
     "drizzle-orm": "^0.44.5",
     "elysia": "latest",
     "elysia-autoload": "^1.7.0",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "postgres": "^3.4.7"
   },
   "trustedDependencies": [
     "@biomejs/biome"

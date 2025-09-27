@@ -1,0 +1,21 @@
+import { geometry, numeric, pgSchema, varchar } from "drizzle-orm/pg-core";
+
+export const dbSchema = pgSchema("cycl3d");
+export const lgas = dbSchema.table("lgas", {
+  lgaCode25: varchar(),
+  lgaName25: varchar(),
+  steCode21: varchar(),
+  steName21: varchar(),
+  ausCode21: varchar(),
+  ausName21: varchar(),
+  areasqkm: numeric(),
+  geom: geometry("geom", { type: "polygon", mode: "xy", srid: 7844 }),
+});
+export const trees = dbSchema.table("trees", {
+  fullId: varchar(),
+  osm_id: varchar().notNull(),
+  osm_type: varchar(),
+  natural: varchar(),
+  diameter_crown: varchar(),
+
+})

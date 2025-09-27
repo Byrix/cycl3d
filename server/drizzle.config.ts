@@ -6,6 +6,10 @@ export default {
   dbCredentials: dbCreds,
   dialect: "postgresql",
   schema: "./src/db/schema.ts",
-  out: "./drizzle",
+  out: "./scripts",
   breakpoints: true,
+  extensionsFilters: ["postgis"],
+  schemaFilter: ["public", "cycl3d"],
+  tablesFilter: ["*"],
+  introspect: { casing: "camel" },
 } satisfies Config;

@@ -1,5 +1,5 @@
 import { createSelectSchema } from "drizzle-typebox";
-import { users } from "./schema";
+import { lgas } from "./schema";
 
-export type SelectUser = typeof users.$inferSelect;
-export const SelectUserSchema = createSelectSchema(users);
+export type SelectUser = typeof lgas.$inferSelect;
+export const SelectUserSchema = createSelectSchema(lgas);
