@@ -2,24 +2,28 @@ FROM oven/bun:latest-alpine AS base
 
 FROM base AS builder
 RUN apk update
-WORKDIR /server
-RUN bun global add turbo@^2
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+RUN bun install -g turbo@^2
 COPY . .
-RUN turbo prune client --docker
+RUN turbo prune @cycl3d/client --docker
 
 FROM base AS installer
 RUN apk update
-WORKDIR /client
-COPY --from=builder /client/out/json/ .
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+COPY --from=builder /app/out/json/ .
 RUN bun install --frozen-lockfile 
-COPY --from=builder /client/out/full/ .
+COPY --from=builder /app/out/full/ .
 RUN bun build
 
 FROM base AS runner
-WORKDIR /server
+WORKDIR /app
 RUN addgroup --system --gid 1001 runner
 RUN adduser --system --uid 1001 bunny
 USER bunny
 
-COPY --from=installer --chown=runner:bunny /client/client ./client
+COPY --from=installer --chown=runner:bunny /app/client/dist ./client
+COPY --from=installer --chown=runner:bunny /app/client/public ./client/public
 CMD bun start

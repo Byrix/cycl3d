@@ -9,6 +9,7 @@
     "lint": { "dependsOn": ["^lint"] },
     "lint:write": { "dependsOn": ["^lint:write"] },
     "format": { "dependsOn": ["^format"] },
-    "format:write": { "dependsOn": ["^format:write"] }
+    "format:write": { "dependsOn": ["^format:write"] },
+    "build": { "dependsOn": ["^build"]}
   }
 }

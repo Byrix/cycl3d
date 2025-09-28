@@ -12,7 +12,8 @@
     "lint": "turbo run lint",
     "lint:write": "turbo run lint:write",
     "format": "turbo run format",
-    "format:write": "turbo run format:write"
+    "format:write": "turbo run format:write",
+    "build": "turbo run build"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:"

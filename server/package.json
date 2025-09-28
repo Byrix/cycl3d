@@ -11,7 +11,8 @@
     "lint": "biome lint",
     "lint:write": "biome lint --write",
     "check": "biome check",
-    "db:pull": "bunx --bun drizzle-kit pull"
+    "db:pull": "bunx --bun drizzle-kit pull",
+    "build": "tsc"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
