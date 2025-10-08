@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     define: {
-      CESIUM_BASE_URL: JSON.stringify(`${cesiumBaseUrl}`),
+      CESIUM_BASE_URL: JSON.stringify(`app/${cesiumBaseUrl}`),
     },
   };
 });
