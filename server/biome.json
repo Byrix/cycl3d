@@ -3,7 +3,7 @@
   "$schema": "../node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["../biome.json"],
   "files": {
-    "includes": ["**/*", "!**/bun.lock", "!**/.turbo"]
+    "includes": ["**/*", "!**/bun.lock", "!**/.turbo", "!**/scripts"]
   },
   "linter": {
     "enabled": true,

@@ -41,6 +41,7 @@ const EnvDTO = Type.Object({
   PGDATABASE: Type.String(),
   PGPORT: Type.Optional(Type.Number({ default: 5432 })),
   GEOSERVER_BASE: Type.String(),
+  STATIC_PATH: Type.String(),
 });
 
 export const env = parseEnv(EnvDTO, process.env);
