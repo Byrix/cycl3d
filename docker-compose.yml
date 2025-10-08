@@ -1,0 +1,60 @@
+name: cycl3d
+
+services:
+  app:
+    container_name: cycl3d-app
+    build: . 
+    restart: unless-stopped
+    ports: 
+      - "3000:3000"
+    networks:
+      - cycl3d_network
+    env_file: "./server/.env.production"
+    environment:
+      - PGHOST=host.docker.internal
+      - PGUSER=geoserver
+      - PGDATABASE=advanced_gis
+      - GEOSERVER_BASE=geoserver:8080/geoserver
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
+  geoserver:
+    container_name: cycl3d-geoserver
+    image: byrix/geoserver:2.28.x
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./geoserver/data:/opt/geoserver_data/:Z
+      - ./geoserver/additional_libs:/opt/additional_libs/:Z
+    env_file: ./.env.geoserver
+    environment:
+      - CORS_ENABLED=true
+      - SKIP_DEMO_DATA=true
+      - POSTGRES_JNDI_ENABLED=true
+      - POSTGRES_JNDI_RESOURCE_NAME=jdbc/postgres
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_DB=advanced_gis
+    healthcheck:
+      test: curl --fail "http://localhost:8080/geoserver/web/wicket/resource/org.geoserver.web.GeoServerbasePage/img/logo.png" || exit 1
+      interval: 60m
+      retries: 3
+      timeout: 20s
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    restart: unless-stopped
+    networks:
+      - cycl3d_network
+
+  cloudflared:
+    container_name: cloudflared
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    networks:
+      - cycl3d_network
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiYTI3YjQzYTc5NzVjZjE4M2ZjYzU4OTU2MmFkM2IzZTMiLCJ0IjoiYTBjNWJhMTYtNWEwMi00NTNjLTk0NTgtY2E3MjQwY2ExZGFkIiwicyI6Ill6Qm1PRFZtT1RRdE1qRTFaaTAwTjJJNUxXRXlOREV0T0dWbVpUVTVOekF5T1dZeSJ9
+
+networks:
+  cycl3d_network:
+    external: true

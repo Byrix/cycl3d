@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "turbo run dev",
+    "dev:server": "bun --watch server/src/index.ts",
+    "start": "bun server/src/index.ts",
     "check": "turbo run check",
     "lint": "turbo run lint",
     "lint:write": "turbo run lint:write",
@@ -20,8 +22,11 @@
   },
   "trustedDependencies": ["@biomejs/biome"],
   "dependencies": {
+    "@elysiajs/static": "^1.4.0",
+    "@preact/signals": "^2.3.1",
     "@tqman/nice-logger": "^1.1.1",
     "axios": "^1.12.2",
+    "picocolors": "^1.1.1",
     "turbo": "^2.5.8"
   },
   "packageManager": "bun@1.2.22"

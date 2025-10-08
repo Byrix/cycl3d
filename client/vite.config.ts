@@ -10,6 +10,7 @@ const cesiumBaseUrl = "cesiumStatic";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
+    base: "/app/",
     server: {
       proxy: {
         openapi: {
@@ -24,10 +25,14 @@ export default defineConfig(({ mode }) => {
           target: env.GEOSERVER_BASE,
           changeOrigin: true,
         },
+        "/ows": {
+          target: env.GEOSERVER_BASE,
+          changeOrigin: true,
+        },
       },
     },
     resolve: {
-      alias: { "$": path.resolve(__dirname, "./src") },
+      alias: { $: path.resolve(__dirname, "./src") },
     },
     plugins: [
       preact(),
@@ -42,7 +47,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     define: {
-      CESIUM_BASE_URL: JSON.stringify(cesiumBaseUrl),
+      CESIUM_BASE_URL: JSON.stringify(`${cesiumBaseUrl}`),
     },
   };
 });

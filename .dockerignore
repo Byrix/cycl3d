@@ -1,0 +1,7 @@
+node_modules
+.gitignore
+biome.json
+server/Docker*
+*.turbo
+server/scripts
+client/dist

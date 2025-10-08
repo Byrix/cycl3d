@@ -1,29 +1,17 @@
-FROM oven/bun:latest-alpine AS base
-
-FROM base AS builder
-RUN apk update
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-RUN bun install -g turbo@^2
-COPY . .
-RUN turbo prune @cycl3d/client --docker
+FROM oven/bun:alpine AS base
 
 FROM base AS installer
-RUN apk update
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
-
-COPY --from=builder /app/out/json/ .
+COPY package.json bun.lock ./
+COPY client/package.json ./client/
+COPY server/package.json server/bun.lock ./server/
 RUN bun install --frozen-lockfile 
-COPY --from=builder /app/out/full/ .
-RUN bun build
+COPY . .
+RUN bun run build
 
-FROM base AS runner
-WORKDIR /app
-RUN addgroup --system --gid 1001 runner
-RUN adduser --system --uid 1001 bunny
-USER bunny
-
-COPY --from=installer --chown=runner:bunny /app/client/dist ./client
-COPY --from=installer --chown=runner:bunny /app/client/public ./client/public
-CMD bun start
+FROM nginx
+RUN rm -rf /usr/share/nginx/html/
+COPY --from=installer /app/client/dist /usr/share/nginx/html
+COPY --from=installer /app/client/public /usr/share/nginx/html/public
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

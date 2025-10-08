@@ -1,6 +1,9 @@
 node_modules
-.turbo
+*.turbo
 .env*
 !.env.example
 out
 **/dist
+app
+server/scripts
+*.glb

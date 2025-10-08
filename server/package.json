@@ -17,10 +17,7 @@
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@types/bun": "^1.2.22",
-    "@types/pg": "^8.15.5",
-    "drizzle-kit": "^0.31.4",
-    "drizzle-typebox": "^0.3.3",
-    "picocolors": "^1.1.1"
+    "@types/pg": "^8.15.5"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.0",
@@ -31,7 +28,10 @@
     "elysia": "latest",
     "elysia-autoload": "^1.7.0",
     "pg": "^8.16.3",
-    "postgres": "^3.4.7"
+    "postgres": "^3.4.7",
+    "picocolors": "^1.1.1",
+    "drizzle-kit": "^0.31.4",
+    "drizzle-typebox": "^0.3.3"
   },
   "trustedDependencies": [
     "@biomejs/biome"
@@ -44,5 +44,6 @@
   },
   "overrides": {
     "@sinclair/typebox": "0.34.0"
-  }
+  },
+  "packageManager": "bun@1.2.23"
 }
