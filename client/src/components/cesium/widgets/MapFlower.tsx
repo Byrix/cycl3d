@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import type { ComponentChildren } from "preact";
 import { map } from "$/shared/cesium.store";
 import { toggleFullscreen, togglePlane } from "./mapControls";
+import { modalState } from "$/shared";
 
 const MapFlower = () => {
   return (
@@ -15,9 +16,7 @@ const MapFlower = () => {
 
       <Petal
         tooltip="Navigation instructions"
-        onClick={() => {
-          console.debug("Nav");
-        }}
+        onClick={() => modalState.enable('navInfo')}
       >
         <Icon icon="material-symbols:info" className="size-8" />
       </Petal>
