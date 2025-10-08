@@ -8,7 +8,11 @@ const DataFilters = () => {
   return (
     <Fieldset title="Data filters" help="filters">
       <div class="grid grid-cols-2 !gap-[1px] rounded-xl overflow-hidden md:grid-cols-2 lg:grid-cols-3 border border-neutral bg-neutral items-center">
-        {/* <FilterButton label="Roads" icon="material-symbols:road-rounded" /> */}
+        <FilterButton
+          label="Roads"
+          icon="material-symbols:road-rounded"
+          sig={data.lanes}
+        />
         <FilterButton
           label="Buildings"
           icon="material-symbols:location-city-rounded"
