@@ -41,6 +41,7 @@ const EnvDTO = t.Object({
   PROD: t.Boolean(),
   SSR: t.Boolean(),
   CESIUM_TOKEN: t.String(),
+  GEOSERVER_BASE: t.String(),
 });
 
 export const env = parseEnv(EnvDTO, import.meta.env);

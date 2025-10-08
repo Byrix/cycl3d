@@ -3,9 +3,9 @@ name: cycl3d
 services:
   app:
     container_name: cycl3d-app
-    build: . 
+    build: .
     restart: unless-stopped
-    ports: 
+    ports:
       - "3000:3000"
     networks:
       - cycl3d_network
@@ -14,7 +14,7 @@ services:
       - PGHOST=host.docker.internal
       - PGUSER=geoserver
       - PGDATABASE=advanced_gis
-      - GEOSERVER_BASE=geoserver:8080/geoserver
+      - GEOSERVER_BASE=http://geoserver:8080/geoserver
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
 
@@ -26,7 +26,7 @@ services:
     volumes:
       - ./geoserver/data:/opt/geoserver_data/:Z
       - ./geoserver/additional_libs:/opt/additional_libs/:Z
-    env_file: ./.env.geoserver
+    env_file: ./.geoserver.env
     environment:
       - CORS_ENABLED=true
       - SKIP_DEMO_DATA=true
@@ -50,10 +50,9 @@ services:
     image: cloudflare/cloudflared
     restart: unless-stopped
     command: tunnel run
+    env_file: ".cloudflare.env"
     networks:
       - cycl3d_network
-    environment:
-      - TUNNEL_TOKEN=eyJhIjoiYTI3YjQzYTc5NzVjZjE4M2ZjYzU4OTU2MmFkM2IzZTMiLCJ0IjoiYTBjNWJhMTYtNWEwMi00NTNjLTk0NTgtY2E3MjQwY2ExZGFkIiwicyI6Ill6Qm1PRFZtT1RRdE1qRTFaaTAwTjJJNUxXRXlOREV0T0dWbVpUVTVOekF5T1dZeSJ9
 
 networks:
   cycl3d_network:

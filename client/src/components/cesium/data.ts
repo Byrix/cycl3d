@@ -1,13 +1,18 @@
 import { effect, signal } from "@preact/signals";
 import {
   createOsmBuildingsAsync,
-  type ImageryLayer,
+  ImageryLayer,
   WebMapServiceImageryProvider,
 } from "cesium";
 import { data, map, useToasts } from "$/shared";
+import { env } from '$/shared';
 
 export const getData = async () => {
-  await Promise.all([getBuildings(), getTrees()]);
+  await Promise.all([
+    getBuildings(),
+    getTrees(),
+    getLanes()
+  ]);
 };
 
 // === BUILDINGS ================================
@@ -42,7 +47,7 @@ const getTrees = async () => {
   try {
     trees.value = map.viewer?.imageryLayers.addImageryProvider(
       new WebMapServiceImageryProvider({
-        url: `${window.location.origin}/wms`,
+        url: `${env.GEOSERVER_BASE}/wms`,
         parameters: {
           format: "image/png",
           transparent: true,
@@ -56,5 +61,35 @@ const getTrees = async () => {
   } catch (err: any) {
     console.error(err);
     useToasts.warn("Failed to load trees");
+  }
+};
+
+// === LANES ====================================
+const lanes = signal<ImageryLayer>();
+effect(() => {
+  if (!data.lanes.loaded) return;
+  // @ts-expect-error lanes.loaded is false if lanes.value does not exist
+  lanes.value.show = data.lanes.show;
+});
+
+const getLanes = async () => {
+  try {
+    lanes.value = map.viewer?.imageryLayers.addImageryProvider(
+      new WebMapServiceImageryProvider({
+        url: `${env.GEOSERVER_BASE}/wms`,
+        parameters: {
+          version: "1.3.0",
+          format: "image/png",
+          transparent: true,
+          enablePickFeatures: true,
+        },
+        layers: "cycl3d:lanes",
+      }),
+    );
+    data.lanes.loaded = true;
+    // biome-ignore lint/suspicious/noExplicitAny: required for caught error
+  } catch (err: any) {
+    console.error(err);
+    useToasts.warn("Failed to lanes.");
   }
 };

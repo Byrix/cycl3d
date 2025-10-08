@@ -9,7 +9,7 @@ export const data = deepSignal({
     show: true,
     loaded: false,
   },
-  roads: {
+  lanes: {
     show: true,
     loaded: false,
   },

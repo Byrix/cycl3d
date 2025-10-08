@@ -11,26 +11,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
     base: "/app/",
-    server: {
-      proxy: {
-        openapi: {
-          target: "http://localhost:3000",
-          changeOrigin: true,
-        },
-        "/api": {
-          target: "http://localhost:3000",
-          changeOrigin: true,
-        },
-        "/wms": {
-          target: env.GEOSERVER_BASE,
-          changeOrigin: true,
-        },
-        "/ows": {
-          target: env.GEOSERVER_BASE,
-          changeOrigin: true,
-        },
-      },
-    },
     resolve: {
       alias: { $: path.resolve(__dirname, "./src") },
     },
