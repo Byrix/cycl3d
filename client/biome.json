@@ -5,10 +5,10 @@
   "files": {
     "includes": [
       "**/*",
-      "!**/node_modules",
-      "!**/dist",
-      "!**/bun.lock",
-      "!**/.turbo"
+      "!node_modules",
+      "!dist",
+      "!bun.lock",
+      "!.turbo"
     ]
   },
   "linter": {

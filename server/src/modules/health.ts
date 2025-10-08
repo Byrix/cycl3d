@@ -1,3 +1,4 @@
+import { env } from "$/env";
 import type { App } from "$/exports";
 
 // TODO: Update these to use actual checks against services
@@ -32,9 +33,9 @@ export default (app: App) =>
       () => ({
         status: "operational",
         services: {
-          database: "connected",
-          cache: "connected",
-          external_api: "avaliable",
+          database: `postgres://${env.PGUSER}@${env.PGHOST}:${env.PGPORT}`,
+          staticPath: `${process.cwd()}/${env.STATIC_PATH}`,
+          geoserver: `${env.GEOSERVER_BASE}`,
         },
         last_check: new Date().toISOString(),
       }),

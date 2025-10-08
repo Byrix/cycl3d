@@ -1,9 +1,9 @@
 import {
-  lazy,
-  LocationProvider,
   ErrorBoundary,
-  Router,
+  LocationProvider,
+  lazy,
   Route,
+  Router,
 } from "preact-iso";
 
 const Home = lazy(() => import("$/routes/home.tsx"));
@@ -16,7 +16,7 @@ const App = () => (
   <LocationProvider scope="/app">
     <ErrorBoundary onError={(e) => console.error(e)}>
       <Router>
-        <Route path="/" component={Home} />
+        <Route path="/app/" component={Home} />
         {/* <Route path='/about' component={About} /> */}
         {/* <Route path='/raw' component={Raw} /> */}
         {/* <Route path='/error' component={ErrorPage} /> */}

@@ -7,3 +7,4 @@ out
 app
 server/scripts
 *.glb
+Tests.tsx

@@ -16,7 +16,7 @@ const MainLayout = ({ children }: { children: ComponentChildren }) => {
           <p>Sean Brooker s3998599</p>
         </aside>
         <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <a href="/">Home</a>
+          <a href="/app/">Home</a>
           <a href="#">About</a>
           <a href={`/openapi`}>API</a>
         </nav>
