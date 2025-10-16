@@ -50,14 +50,23 @@ const AttributionItem = ({ credit }: { credit: string}) => {
   if (credit==="") return;
   return (
     <li class='list-row'>
-      <div><Icon icon="material-symbols:search" className='size-6' /></div>
-      <div>
-        <div>Title</div>
-        <div class='text-xs uppercase font-semibold opacity-60'>{credit}</div>
-      </div>
+      <div>{credit}</div>
     </li>
   );
 }
+
+// const AttributionItem = ({ credit }: { credit: string}) => {
+//   if (credit==="") return;
+//   return (
+//     <li class='list-row'>
+//       <div><Icon icon="material-symbols:search" className='size-6' /></div>
+//       <div>
+//         <div>Title</div>
+//         <div class='text-xs uppercase font-semibold opacity-60'>{credit}</div>
+//       </div>
+//     </li>
+//   );
+// }
 
 export default DataAttribution;
 

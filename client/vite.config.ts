@@ -1,14 +1,13 @@
 import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
-const cesiumSource = "../node_modules/cesium/Build/Cesium";
+const cesiumSource = "./node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesiumStatic";
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
+export default defineConfig(() => {
   return {
     base: "/app/",
     resolve: {
@@ -27,7 +26,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     define: {
-      CESIUM_BASE_URL: JSON.stringify(`app/${cesiumBaseUrl}`),
+      CESIUM_BASE_URL: JSON.stringify(cesiumBaseUrl),
     },
   };
 });

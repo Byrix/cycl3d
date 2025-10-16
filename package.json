@@ -18,12 +18,14 @@
     "build": "turbo run build"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:"
+    "@biomejs/biome": "catalog:",
+    "@tailwindcss/typography": "^0.5.19"
   },
   "trustedDependencies": ["@biomejs/biome"],
   "dependencies": {
     "@elysiajs/static": "^1.4.0",
     "@preact/signals": "^2.3.1",
+    "@sinclair/typebox": "^0.34.41",
     "@tqman/nice-logger": "^1.1.1",
     "axios": "^1.12.2",
     "picocolors": "^1.1.1",

@@ -6,7 +6,7 @@ type Sig = typeof data.buildings;
 
 const DataFilters = () => {
   return (
-    <Fieldset title="Data filters" help="filters">
+    <Fieldset title="Data filters" help="Click on an icon to toggle the visibility of the corresponding element on the map!">
       <div class="grid grid-cols-2 !gap-[1px] rounded-xl overflow-hidden md:grid-cols-2 lg:grid-cols-3 border border-neutral bg-neutral items-center">
         <FilterButton
           label="Roads"
@@ -39,7 +39,7 @@ const FilterButton = ({
 }) => {
   return (
     <label
-      class={`p-4 btn btn-soft rounded-none border-none swap !aspect-square w-full h-fit ${sig.show ? "bg-base-100" : "bg-base-200"}`}
+      class={`p-4 btn btn-soft rounded-none border-none swap !aspect-square w-full h-fit ${sig.show ? "bg-base-100" : "bg-base-200"} ${sig.loaded ? '' : 'btn-disabled'}`}
     >
       <input
         type="checkbox"

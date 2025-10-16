@@ -10,7 +10,7 @@ import { env } from '$/shared';
 export const getData = async () => {
   await Promise.all([
     getBuildings(),
-    getTrees(),
+    // getTrees(),
     getLanes()
   ]);
 };

@@ -21,6 +21,8 @@ const CesiumMap = () => {
       homeButton: false,
       navigationHelpButton: false,
       geocoder: false,
+      timeline: false,
+      animation: false,
     });
     map.flyHome();
     getData();

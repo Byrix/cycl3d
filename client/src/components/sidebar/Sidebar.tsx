@@ -4,8 +4,12 @@ import { DataAttribution, DataFilter, Geocoder } from "./widgets";
 const Sidebar = () => {
   return (
     <div class="w-1/5 h-full max-h-[89vh] bg-base-200 min-w-50 flex flex-col p-4 gap-3 items-center border-y-2 border-base-300 overflow-scroll">
-      <h3 class="text-primary text-2xl font-bold text-center">Sidebar</h3>
-      <p class="text-center">Description</p>
+      <h3 class="text-primary text-xl font-bold text-center">
+        Melbourne's Cycling Digital Twin
+      </h3>
+      <p class="text-center">
+        Pan around and explore cycling-related infrastructure around the City of Melbourne. Click on features to learn more about it. 
+      </p>
 
       <div class="divider m-[0.5rem]">
         <Icon

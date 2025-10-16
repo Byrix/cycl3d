@@ -18,7 +18,7 @@ const Navbar = ({ children }: { children: ComponentChildren }) => {
             ))}
           </ul>
         </div>
-        <a href="/" class="btn btn-ghost text-4xl">
+        <a href="/app/" class="btn btn-ghost text-4xl">
           cycl<span class="text-primary -ml-1">3d</span>
         </a>
       </div>
