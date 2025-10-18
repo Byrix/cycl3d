@@ -17,6 +17,7 @@ services:
       - PGUSER=geoserver
       - PGDATABASE=advanced_gis
       - GEOSERVER_BASE=https://geoserver.seanbrooker.com/geoserver
+      - BUN_INSTALL_CACHE_DIR=/bun/cache
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
       - "geoserver:172.18.0.2"
