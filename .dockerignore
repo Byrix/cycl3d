@@ -1,6 +1,6 @@
 node_modules
 .gitignore
-biome.json
+**/biome.json
 server/Docker*
 *.turbo
 server/scripts
