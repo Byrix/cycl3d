@@ -4,15 +4,10 @@ import {
   ImageryLayer,
   WebMapServiceImageryProvider,
 } from "cesium";
-import { data, map, useToasts } from "$/shared";
-import { env } from '$/shared';
+import { data, env, map, useToasts } from "$/shared";
 
 export const getData = async () => {
-  await Promise.all([
-    getBuildings(),
-    // getTrees(),
-    getLanes()
-  ]);
+  await Promise.all([getBuildings(), getTrees(), getLanes()]);
 };
 
 // === BUILDINGS ================================
@@ -54,6 +49,7 @@ const getTrees = async () => {
           enablePickFeatures: true,
         },
         layers: "cycl3d:trees",
+        credit: "City of Melbourne Open Data",
       }),
     );
     data.trees.loaded = true;
@@ -84,6 +80,8 @@ const getLanes = async () => {
           enablePickFeatures: true,
         },
         layers: "cycl3d:lanes",
+        minimumLevel: 0,
+        maximumLevel: 2,
       }),
     );
     data.lanes.loaded = true;
