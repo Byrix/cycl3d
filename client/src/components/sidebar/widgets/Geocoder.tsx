@@ -30,42 +30,7 @@ const state = deepSignal<GeocoderState>({
 });
 const inputValue = signal("");
 
-// TODO: Actual geocoding
-const fakeSearch = async (q: string): Promise<GeocodeResponse[]> => {
-  if (q == "") return [];
-  state.isSubmitting = true;
-  await new Promise((r) => setTimeout(r, 2000));
-  state.isSubmitting = false;
-  return [
-    {
-      rank: 14,
-      name: "Melbourne, City of Melbourne, Victoria, Australia",
-      bbox: [-38.49937, -37.40175, 144.44405, 146.1925],
-    },
-    {
-      rank: 16,
-      name: "Melbourne, Brevard County, Florida, United States",
-      bbox: [28.0350148, 28.200533, -80.7482559, -80.5749441],
-    },
-    {
-      rank: 16,
-      name: "Melbourne, Logan Township, Marshall County, Iowa, United States",
-      bbox: [41.9353692, 41.9497466, -93.1094543, -93.0963237],
-    },
-    {
-      rank: 12,
-      name: "City of Melbourne, Victoria, Australia",
-      bbox: [-37.850667, -37.775451, 144.896981, 144.9913462],
-    },
-    {
-      rank: 18,
-      name: "Melbourne, City of Melbourne, Victoria, Australia",
-      bbox: [-37.855527, -37.799446, 144.9514311, 144.989097],
-    },
-  ];
-};
-
-const app = treaty<App>("localhost:3000");
+const app = treaty<App>("cycl3d.seanbrooker.com");
 const search = async (q: string) => {
   if (q == "") return [];
   state.isSubmitting = true;

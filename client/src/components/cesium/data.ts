@@ -80,8 +80,6 @@ const getLanes = async () => {
           enablePickFeatures: true,
         },
         layers: "cycl3d:lanes",
-        minimumLevel: 0,
-        maximumLevel: 2,
       }),
     );
     data.lanes.loaded = true;

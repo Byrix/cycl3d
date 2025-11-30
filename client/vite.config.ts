@@ -4,7 +4,7 @@ import path from "path";
 import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
-const cesiumSource = "./node_modules/cesium/Build/Cesium";
+const cesiumSource = "../node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesiumStatic";
 
 export default defineConfig(() => {
