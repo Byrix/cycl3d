@@ -23,11 +23,13 @@ export namespace Geocoder {
     display_name: t.String(),
     boundingbox: t.Array(t.Number(), { minItems: 4 }),
   });
-  export const ResponseSchema = t.Object({
-    rank: t.Integer(),
-    name: t.String(),
-    bbox: t.Array(t.Number(), { minItems: 4, maxItems: 4 }),
-  });
+  export const ResponseSchema = t.Array(
+    t.Object({
+      rank: t.Integer(),
+      name: t.String(),
+      bbox: t.Array(t.String(), { minItems: 4, maxItems: 4 }),
+    }),
+  );
 
   export type geocodeResponse = typeof ResponseSchema.static;
   export type nominatimResponse = typeof NominatimResponseSchema.static;

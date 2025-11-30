@@ -1,8 +1,8 @@
+import axios, { type AxiosResponse } from "axios";
 import { eq, sql } from "drizzle-orm";
+import { status } from "elysia";
 import { db } from "$/db";
 import { lgas } from "$/db/schema";
-import { status } from "elysia";
-import axios, { type AxiosResponse } from "axios";
 import type { Geocoder } from "./model";
 
 export abstract class Geocoding {
@@ -58,7 +58,7 @@ export abstract class Geocoding {
       throw status(respStatus, respMsg);
     }
 
-    const places = resp.data
+    const places = await resp.data
       .map((option) => ({
         name: option.display_name,
         rank: option.place_rank,
@@ -69,14 +69,9 @@ export abstract class Geocoding {
           a.rank - b.rank,
       );
 
-    console.debug(places);
+    // console.debug(places);
 
-    return new Response(JSON.stringify(places), {
-      status: resp.status,
-      headers: new Headers({
-        "Content-Type":
-          (resp.headers["Content-Type"] as string) ?? "application/json",
-      }),
-    });
+    // return JSON.stringify(places);
+    return places;
   }
 }

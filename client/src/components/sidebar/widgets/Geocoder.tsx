@@ -1,4 +1,5 @@
-import type { GeocodeResponse } from "@cycl3d/server";
+import type { App, GeocodeResponse } from "@cycl3d/server";
+import { treaty } from "@elysiajs/eden";
 import { Icon } from "@iconify/react";
 import { effect, signal } from "@preact/signals";
 import { For } from "@preact/signals/utils";
@@ -63,15 +64,25 @@ const fakeSearch = async (q: string): Promise<GeocodeResponse[]> => {
     },
   ];
 };
+
+const app = treaty<App>("localhost:3000");
+const search = async (q: string) => {
+  if (q == "") return [];
+  state.isSubmitting = true;
+  const res = await app.api.geocode.get({ query: { q: q } });
+  state.isSubmitting = false;
+  return res;
+};
 effect(() => {
-  fakeSearch(state.query).then((res) => {
-    if (state.query != "" && res.length === 0) {
+  if (state.query == "") return;
+  search(state.query).then((res) => {
+    if (res.data.length === 0) {
       useToasts.cook({
         type: "warning",
         message: "No matching locations were found.",
       });
     }
-    state.results = res;
+    state.results = res.data;
   });
 });
 
