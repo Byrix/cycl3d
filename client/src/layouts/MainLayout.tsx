@@ -5,7 +5,7 @@ const MainLayout = ({ children }: { children: ComponentChildren }) => {
   return (
     <>
       <Navbar>
-        <a href="/app/about/">About</a>
+        <a href="/app/contact/">Contact</a>
         <a href="https://github.com/byrix/cycl3d">Github</a>
       </Navbar>
 
