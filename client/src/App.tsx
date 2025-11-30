@@ -7,7 +7,9 @@ import {
 } from "preact-iso";
 
 const Home = lazy(() => import("$/routes/home.tsx"));
-import About from './routes/about.tsx';
+
+import Contact from "./routes/contact.tsx";
+
 // const Raw = lazy(() => import("./routes/raw.tsx"));
 // const NotFound = lazy(() => import('./routes/_404.tsx'));
 // const ErrorPage = lazy(() => import('./routes/_error.tsx'));
@@ -17,7 +19,7 @@ const App = () => (
     <ErrorBoundary onError={(e) => console.error(e)}>
       <Router>
         <Route path="/app/" component={Home} />
-        <Route path='/app/about/' component={About} />
+        <Route path="/app/contact/" component={Contact} />
         {/* <Route path='/raw' component={Raw} /> */}
         {/* <Route path='/error' component={ErrorPage} /> */}
         {/* <NotFound default /> */}

@@ -8,3 +8,5 @@ app
 server/scripts
 *.glb
 Tests.tsx
+**/*.md
+lanes.xml
