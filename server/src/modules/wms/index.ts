@@ -47,6 +47,7 @@ export default (app: App) =>
           summary: "Web map service endpoint",
           description: "WMS endpoint for streaming the used datasets",
           tags: ["WMS"],
+	  deprecated: true
         },
       },
     )
